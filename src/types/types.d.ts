@@ -4,7 +4,7 @@ declare global {
   namespace Express {
     interface User {
       userId: string;
-      email?: string; // Add other properties as needed
+      email?: string; 
     }
 
     interface Request {

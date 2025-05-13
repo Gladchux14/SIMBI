@@ -18,7 +18,7 @@ export const calculateStreak = (lastStudyDate: Date | null): number => {
   const diff = differenceInDays(today, lastStudyDay);
  if (diff === 1) {
 // Studied yesterday, streak continues. The actual increment happens in updateStreak.
-    return 1; // Indicates continuity from yesterday
+    return 1;
   } else {
     return 0;  // Missed a day or more, streak is broken
   }
@@ -32,7 +32,7 @@ export const updateStreak = (currentStreak: number, longestStreak: number, lastS
     const lastActivityDay = lastStreakActivityDate ? startOfDay(lastStreakActivityDate) : null;
 
     if (!lastActivityDay) {
-        // First ever streak eligible activity
+    
         return { newStreak: 1, newLongestStreak: 1 };
     }
      // Check if the last activity was already today
@@ -51,6 +51,6 @@ export const updateStreak = (currentStreak: number, longestStreak: number, lastS
     } else {
         //last activity was more than 1 day ago, streak is broken
         return { newStreak: 1, newLongestStreak: longestStreak };
-         // Start a new streak of 
+       
     }
 };
