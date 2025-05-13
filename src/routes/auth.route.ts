@@ -66,7 +66,7 @@ const router = Router();
  *             required:
  *               - email
  *               - password
- *           properties:
+ *             properties:
  *               email:
  *                 type: string
  *                 format: email
@@ -74,13 +74,13 @@ const router = Router();
  *               password:
  *                 type: string
  *                 format: password
+ *                 description: The user's password
  *               currentStreak: 
  *                 type: number 
  *                 default: 0 
  *               longestStreak: 
  *                 type: number
  *                 default: 0  
- *                 description: The user's password
  *     responses:
  *       200:
  *         description: Login successfully. Streak potentially updated.
@@ -117,10 +117,8 @@ router.post('/login', login);
  *               - name
  *               - email
  *               - password
- *           properties:
  *               - levelOfEducation
- *               - walletAddress
- *               - privateKey
+ *             properties:
  *               name:
  *                 type: string
  *                 description: The user's full name
@@ -143,7 +141,7 @@ router.post('/login', login);
  *                 type: string
  *                 description: The user's blockchain private key
  *     responses:
- *       200: 
+ *       201:
  *         description: Registration successful
  *         content:
  *           application/json:
@@ -152,11 +150,16 @@ router.post('/login', login);
  *               properties:
  *                 success:
  *                   type: boolean
- *                 user:
- *                   $ref: '#/components/schemas/User'
- *                 token:
+ *                 message:
  *                   type: string
- *                   description: JWT authentication token
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     user:
+ *                       $ref: '#/components/schemas/User'
+ *                     token:
+ *                       type: string
+ *                       description: JWT authentication token
  *       400:
  *         description: Invalid input or email already registered
  */
